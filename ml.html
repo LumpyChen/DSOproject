@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Yibo Cao </title>
+<link rel="stylesheet" type="text/css" href="week10.css" />
+</head>
+
+<body>
+
+<img src="housing1.jpg" width="900" height="500" alt="This is the banner"/>
+
+<ul id="nav">
+	<li><a href="index.html">Home</a></li>
+	<li><a href="SC.html">Summary and Correlation</a></li>
+	<li><a href="LR.html">Linear Regression</a></li>
+	<li><a href="ANOVA.html">ANOVA</a></li>
+	<li><a href="BLR.html">BLR</a></li>
+	<li><a href="RPM.html">RPM</a></li>
+	<li><a href="ml.html">Findings</a></li>
+	
+	
+</ul>
+<h1>Findings</h1>
+<h2>Simple Correlation</h2>
+	<p>We did conducted a correlation on SAS to narrow independent variables. Since our dataset was quite large, we did a random sampling to select 1,000 of 128,666 observations. The code is:</p>
+	<p>import pandas as pd</p>
+	<p>original_csv = "Proj3_LACountyHousesCleanedV1.csv"</p>
+	<p>csv_object = pd.read_csv(original_csv)</p>
+	<p>df_1000 = csv_object.sample(1000)</p>
+	<p>df_1000.to_csv('out.csv')</p>
+<h2>Linear Regression</h2>
+	<p>Regression Equation: </p>
+	<p>N_Price=-9,622,701 
+- 436,116 * N_Latititude 
+-199,088 * N_Longitude 
++ 5.82 * N_Zip_Median_Income 
+- 242,232 * N_Beds 
++79,683 * N_Baths 
++801.32 * N_Sq_Feet
++8039 * N_Year_Age
+</p>
+<p>The model has a decent R-Square value of 0.68 with numerical variables.</p>
+<h2>ANOVA</h2>
+	<ul><li>No correlations with sold month, sold quarter, and sold year</li><li>No correlation with sold month and year with full factorial</li></ul>
+	<p>If Zips were added to sold month, sold quarter, and sold year: </p>
+	<ul><li>Improved Adjust R-Square value (0.40)</li><li>Statistically significant only for specific Zip names of: Arcadia, Beverly Hills, Malibu, Manhattan Beach, Pacific Palisades, PV Estates, San Marino, Santa Monica, W Hollywood</li><li>Negative correlations with: Lancaster, Lynwood, and Palmdale</li></ul>
+<h2>Binary Logistic Regression</h2>
+	<ul><li>The goal of the binary logistic regression is to determine whether a house will sell for higher than $1 Million</li><li>The model is statistically significant with P-values of all less than 0.0001 </li><li>All Years were not statistically significant</li><li>Only Jan, May, and July were statistically significant</li><li>The Zip Population, Zip Median Income, Bedrooms, Bathrooms, Square Feet, and Lot Size were also statistically significant</li><li>The AUC of the model is pretty good at 0.9385</li><li>The model does a good job at predicting whether a home will be sold for more than $1 Million</li></ul>
+<h2>Rapid Predictive Modeler</h2>
+	<p>The goal of this Rapid Predictive Modeler is to see if we can improve upon the Binary Logistic Regression in determining whether a house will sell more than $1 Million more accurately.
+These were the available variables inputted into our Rapid Predictive Modeler:
+</p>
+<center><img src="RPM.png" width="200" height="350" alt="This is the banner"/></center>
+	<p>The most important variables in determining whether a house will sell more than $1 Million are Square Feet, Baths, Zip Median Income, Latitude, Longitude, Zip Population, and Zip Code in descending order.
+</p>
+	<center><img src="RPM2.png" width="500" height="400" alt="This is the banner"/></center>
+	<ul><li>The ROC plot has a training statistic of 0.94 and a valid statistic of 0.81</li><li>The AUC (ROC Index) is 0.998 for train and 0.953 for validation</li><li>The training data yielded 98.15% true negative and 94.26 % true positive</li><li>The validate data yielded 93.39% true negative and 94.30 % true positive</li></ul>
+	<center><img src="ROC.png" width="500" height="400" alt="This is the banner"/></center>
+<h2>Project Summary</h2>
+	<h3>If the project were to be done over again, what changes would we make?
+</h3>
+	<p>For this project our goal was to predict home sale prices based on publicly available data.  We analyzed home price per SqFt, location, number of beds and baths, lot size, and days on market.
+If we were to do the project over again, we would expand our dataset to include additional factors that help determine if and when a home sells, and at what price. 
+</p>
+	<h3>We would analyze the following:
+</h3>
+	<p>Noise pollution, school rankings, crime rates, commute to available work sites, distance to an airport, list pricing, house prices nearby, and whether or not the home is turnkey (depending on the preference of the buyer).
+</p>
+	
+	
+	
+</body>
+</html>
